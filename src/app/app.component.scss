@@ -1,0 +1,95 @@
+.loginfont{
+    color: white;
+    font: bold;
+}
+
+.textbox {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.bg {
+    background: url("../../assets/images/groceryimages.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;  
+    z-index:-1;
+    
+}
+
+.formborder {
+    border: 1px solid;
+    border-color: #212529;
+}
+
+.form-container {
+    border: 0px solid;
+    padding: 30px 40px;
+    margin-top: 20vh;
+    -webkit-box-shadow: -1px 1px 43px 12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 43px 12px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 43px 12px rgba(0,0,0,0.75);
+    background-color: yellowgreen;
+    border-radius: 10px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #212529;
+    margin-top: 56px;
+        
+}
+
+.sidebar ul li {
+    color: rgba(230,230,230,0.9);
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(100,100,100,0.3);
+}
+
+.navibar {
+    width: 100%;
+    padding: 0px;
+    position: fixed;
+}
+
+.table {
+    margin-top: 10px;
+    margin-left: 115px;
+    width: 80%;
+}
+
+.title {
+    color: black;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.buttonrow {
+    margin-right: 30px;
+    height: 50px;
+    float: right;
+}
+
+.profile {
+    width: 100%;
+    text-align: center;
+}
+
+#content {
+    margin-left: 200px;
+    height: 100%;
+    padding: 15px;
+ 
+}
