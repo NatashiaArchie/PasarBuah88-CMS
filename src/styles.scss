@@ -1,2 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.searchbox input[type=text]:focus:not([readonly]) {
+    border: 1px solid #6c757d;
+    box-shadow: 0 0 0 1px #899097;
+}
+
+.borderbottom {
+    border-bottom: 1px solid #ABCC67;
+    border-width: medium;
+    margin-bottom: 10px;
+}
+
+.buttonrow {
+    float: right;
+    margin-bottom: 10px;
+}
+
+//button
+.mybutton {
+    background-color: #8cba2d;
+    border-color: #8cba2d;
+}

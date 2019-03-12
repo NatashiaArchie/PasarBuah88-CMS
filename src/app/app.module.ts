@@ -11,6 +11,9 @@ import { OrderComponent } from './order/order.component';
 import { VoucherComponent } from './voucher/voucher.component';
 import { ManageStaffComponent } from './manage-staff/manage-staff.component';
 import { ReportComponent } from './report/report.component';
+import { AddStaffComponent } from './add-staff/add-staff.component';
+import { MaterialModule } from './material/material.module';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,17 @@ import { ReportComponent } from './report/report.component';
     OrderComponent,
     VoucherComponent,
     ManageStaffComponent,
-    ReportComponent
+    ReportComponent,
+    AddStaffComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddStaffComponent, AddProductComponent]
 })
 export class AppModule { }

@@ -9,6 +9,7 @@ import { OrderComponent } from './order/order.component';
 import { VoucherComponent } from './voucher/voucher.component';
 import { ReportComponent } from './report/report.component';
 import { ManageStaffComponent } from './manage-staff/manage-staff.component';
+import { AddStaffComponent } from './add-staff/add-staff.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'navigation', component: NavigationComponent},
