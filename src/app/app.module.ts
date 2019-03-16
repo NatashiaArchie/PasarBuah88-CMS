@@ -20,6 +20,7 @@ import { EmployeeService } from './shared/employee.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [AddStaffComponent, AddProductComponent]
 })
