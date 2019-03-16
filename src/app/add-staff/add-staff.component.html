@@ -5,34 +5,36 @@
   <h1 class="h2">Add Staff</h1>
 </div>
   <!-- <mat-dialog-content> -->
-      <form class="" action="" method="">
-          <div class="form-group">
-            <label>Username</label>
-            <input type="value" class="form-control" placeholder="Enter Username" name="editusername" cdkFocusInitial>
-          </div>
-          <div class="form-group">
-            <label>Gender</label>
-            <input type="value" class="form-control" placeholder="Enter Gender" name="editgender">
-          </div> 
-          <div class="form-group">
-            <label>Phone</label>
-            <input type="value" class="form-control" placeholder="Enter Phone Number" name="editphone">
-          </div>
-          <div class="form-group">
-            <label>IC</label>
-            <input type="value" class="form-control" placeholder="Enter IC" name="editic">
-          </div>
-          <div class="form-group">
-            <label>Address</label>
-            <input type="value" class="form-control" placeholder="Enter Addresss" name="editaddress">
-          </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" placeholder="Enter Addresss" name="editpassword">
-          </div> 
-          <!-- <mat-dialog-actions></mat-dialog-actions> -->
-          <button type="submit" class="btn btn-block">Submit</button>
-        </form>
+    <form class="form-container" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+      <div class="textbox">
+        <label>Username</label>
+        <input cdkFocusInitial type="text" [class.is-invalid]="Username.invalid && Username.touched" class="form-control validate" placeholder="Enter Username" name="Username" #Username="ngModel" [(ngModel)]="employee.Username" required> 
+        <small class="text-danger" [class.d-none]="Username.valid || Username.untouched">Username is required</small>
+      </div>
+      <div class="textbox">
+        <label>Full Name</label>
+        <input type="text" [class.is-invalid]="FullName.invalid && FullName.touched" class="form-control" placeholder="Enter Full Name" name="FullName" #FullName="ngModel" [(ngModel)]="employee.FullName" required>
+        <small class="text-danger" [class.d-none]="FullName.valid || FullName.untouched">Full name is required</small>
+      </div>
+      <div class="textbox">
+        <label>Email</label>
+        <input type="text" [class.is-invalid]="Email.invalid && Email.touched" class="form-control" placeholder="Enter Email Address" name="Email" #Email="ngModel" [(ngModel)]="employee.Email" required [pattern]="emailPattern"> 
+        <small class="text-danger" [class.d-none]="Email.valid || Email.untouched">Invalid Email</small>
+      </div>
+      <div class="textbox">
+        <label>Phone Number</label>
+        <input type="text" [class.is-invalid]="PhoneNumber.invalid && PhoneNumber.touched" class="form-control" placeholder="Enter Phone Number" name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="employee.PhoneNumber" required [pattern]="phonePattern">
+        <small class="text-danger" [class.d-none]="PhoneNumber.valid || PhoneNumber.untouched">Invalid Phone Number</small>
+      </div>
+      <div class="textbox">
+        <label>Password</label>
+        <input type="password" class="form-control" placeholder="Enter Password" name="Password" #Password="ngModel" [(ngModel)]="employee.Password" required>
+      </div>  
+      <div class="textbox">
+        <button [disabled]="!userRegistrationForm.valid"type="submit" class="btn btn-success btn-block">Submit</button>
+      </div>
+      
+    </form>
       
   <!-- </mat-dialog-content> -->
   

@@ -10,15 +10,18 @@ import { VoucherComponent } from './voucher/voucher.component';
 import { ReportComponent } from './report/report.component';
 import { ManageStaffComponent } from './manage-staff/manage-staff.component';
 import { AddStaffComponent } from './add-staff/add-staff.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'navigation', component: NavigationComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'product', component: ProductComponent},
-  {path: 'order', component: OrderComponent},
-  {path: 'voucher', component: VoucherComponent},
-  {path: 'report', component: ReportComponent},
-  {path: 'manageStaff', component: ManageStaffComponent}
+  {path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard]},
+  {path: 'product', component: ProductComponent,canActivate: [AuthGuard]},
+  {path: 'order', component: OrderComponent,canActivate: [AuthGuard]},
+  {path: 'voucher', component: VoucherComponent,canActivate: [AuthGuard]},
+  {path: 'report', component: ReportComponent,canActivate: [AuthGuard]},
+  {path: 'manageStaff', component: ManageStaffComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({

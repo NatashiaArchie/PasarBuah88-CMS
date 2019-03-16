@@ -14,6 +14,12 @@ import { ReportComponent } from './report/report.component';
 import { AddStaffComponent } from './add-staff/add-staff.component';
 import { MaterialModule } from './material/material.module';
 import { AddProductComponent } from './add-product/add-product.component';
+import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
+import { EmployeeService } from './shared/employee.service';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -27,14 +33,19 @@ import { AddProductComponent } from './add-product/add-product.component';
     ManageStaffComponent,
     ReportComponent,
     AddStaffComponent,
-    AddProductComponent
+    AddProductComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent],
   entryComponents: [AddStaffComponent, AddProductComponent]
 })

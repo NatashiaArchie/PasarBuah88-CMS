@@ -1,0 +1,42 @@
+<div class="bg">
+  <div class="container-fluid loginfont">
+      <div class="row">
+          <div class="col-md-4 col-sm-4 col-xs-12"></div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+              
+              <form class="form-container" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+                  <h1 class="loginh1">Register</h1>
+                  <div class="textbox">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="  Enter first name" name="username" #username="ngModel" [(ngModel)]="employee.Username"> 
+                  </div>
+                  <div class="textbox">
+                    <label>Full Name</label>
+                    <input type="input" class="form-control" placeholder="  Enter last name" name="name" #name="ngModel" [(ngModel)]="employee.Name" required>
+                  </div>
+                  <div class="textbox">
+                    <label>Email</label>
+                    <input type="input" class="form-control" placeholder="  Enter phone number" name="email" #email="ngModel" [(ngModel)]="employee.Email" required> 
+                  </div>
+                  <div class="textbox">
+                    <label>Phone Number</label>
+                    <input type="input" class="form-control" placeholder="  Enter email address" name="phonenumber" #phonenumber="ngModel" [(ngModel)]="employee.PhoneNumber" required>
+                  </div>
+                  <div class="textbox">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="  Enter Password" name="password" #password="ngModel" [(ngModel)]="employee.Password" required>
+                  </div>  
+                  <div class="textbox">
+                    <button type="submit" class="btn btn-success btn-block">Register</button>
+                  </div>                 
+                  <div style="text-align: center">
+                      <span >Already have account? <a href="login.jsp">Login</a></span>
+                  </div>
+                  
+                </form>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12"></div>
+      </div>
+  </div>
+</div>
+
