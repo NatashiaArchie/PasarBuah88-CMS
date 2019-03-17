@@ -3,6 +3,7 @@ import { NavigationService } from '../navigation.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { AddStaffComponent } from '../add-staff/add-staff.component';
 import { LoginComponent } from '../login/login.component';
+import { EmployeeService } from '../shared/employee.service';
 
 @Component({
   selector: 'app-manage-staff',
@@ -10,15 +11,16 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./manage-staff.component.scss']
 })
 export class ManageStaffComponent implements OnInit {
-
+  
   constructor(
     public dialog: MatDialog,
     public navigation: NavigationService,
-    
+    public employeeService: EmployeeService
     ) { }
 
   ngOnInit() {
     this.navigation.show();
+    this.employeeService.refreshList();
   }
 
   openDialog() {

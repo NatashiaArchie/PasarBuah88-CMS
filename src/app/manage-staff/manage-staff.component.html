@@ -30,28 +30,24 @@
   <table class="table table-striped table-sm">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Header</th>
-        <th>Header</th>
-        <th>Header</th>
-        <th>Header</th>
+        <!-- <th>#</th> -->
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1,001</td>
-        <td>Lorem</td>
-        <td>ipsum</td>
-        <td>dolor</td>
-        <td>sit</td>
+      <tr *ngFor="let emp of employeeService.list">
+        <td>{{emp.FullName}}</td>
+        <td>{{emp.Email}}</td>
+        <td>{{emp.PhoneNumber}}</td>
+        <td>
+          <button type="button" class="btn btn-sm btn-outline-info actionButton " >Edit</button>
+          <button type="button" class="btn btn-sm btn-outline-danger actionButton" >Delete</button>
+        </td>
       </tr>
-      <tr>
-        <td>1,002</td>
-        <td>amet</td>
-        <td>consectetur</td>
-        <td>adipiscing</td>
-        <td>elit</td>
-      </tr>
+      
   </tbody>
   </table>
 </main>

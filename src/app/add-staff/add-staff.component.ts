@@ -39,9 +39,9 @@ export class AddStaffComponent implements OnInit {
           form.reset();
           this.toastr.success('Employee registration sucessful');
           this.dialogRef.close();
+          this.employeeService.refreshList();
         }
         else {
-          form.reset();
           this.toastr.error(data.Errors);
           console.log(data.Errors);
         }

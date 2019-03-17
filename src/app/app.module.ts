@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './auth/auth.guard';
+import { EditStaffComponent } from './edit-staff/edit-staff.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthGuard } from './auth/auth.guard';
     ReportComponent,
     AddStaffComponent,
     AddProductComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditStaffComponent
   ],
   imports: [
     BrowserModule,
