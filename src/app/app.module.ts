@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './auth/auth.guard';
 import { EditStaffComponent } from './edit-staff/edit-staff.component';
+import { ProductService } from './shared/product.service';
 
 @NgModule({
   declarations: [
@@ -48,8 +49,8 @@ import { EditStaffComponent } from './edit-staff/edit-staff.component';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [EmployeeService, AuthGuard],
+  providers: [EmployeeService, AuthGuard, ProductService],
   bootstrap: [AppComponent],
-  entryComponents: [AddStaffComponent, AddProductComponent]
+  entryComponents: [AddStaffComponent, EditStaffComponent, AddProductComponent]
 })
 export class AppModule { }

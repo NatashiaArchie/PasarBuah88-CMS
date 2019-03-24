@@ -29,7 +29,8 @@ export class RegisterComponent implements OnInit {
     }
     form.reset();
     this.employee = {
-      Username: '',
+      Id: '',
+      UserName: '',
       FullName: '',
       Email: '',
       PhoneNumber: '',

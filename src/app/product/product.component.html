@@ -27,31 +27,38 @@
           
       </div>
   </div>
-    <table class="table table-striped table-sm">
+  <table class="table table-striped table-sm">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Header</th>
-          <th>Header</th>
-          <th>Header</th>
-          <th>Header</th>
+          <!-- <th>#</th> -->
+          <th>Product Name</th>
+          <th>Retailer Price</th>
+          <th>Sales Price</th>
+          <th>Quantity</th>
+          <th>Category</th>
+          <th>Brand</th>
+          <th>Status</th>
+          <th>Unit Type</th>
+          <th>Action</th>
+          
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1,001</td>
-          <td>Lorem</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
+        <tr *ngFor="let pd of productService.list">
+          <td>{{pd.ProductName}}</td>
+          <td>{{pd.RetailerPrice}}</td>
+          <td>{{pd.SalesPrice}}</td>
+          <td>{{pd.Quantity}}</td>
+          <td>{{pd.Category}}</td>
+          <td>{{pd.ProductBrand}}</td>
+          <td>{{pd.ProductStatus}}</td>
+          <td>{{pd.ProductUnitType}}</td>
+          <td>
+            <button type="button" class="btn btn-sm btn-outline-info actionButton " (click)="openDialogEdit(pd)">Edit</button>
+            <button type="button" class="btn btn-sm btn-outline-danger actionButton" (click)="onDelete(pd.ProductId)">Delete</button>
+          </td>
         </tr>
-        <tr>
-          <td>1,002</td>
-          <td>amet</td>
-          <td>consectetur</td>
-          <td>adipiscing</td>
-          <td>elit</td>
-        </tr>
+        
     </tbody>
     </table>
   </main>

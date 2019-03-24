@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Employee } from './employee.model';
-import { debug } from 'util';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +13,8 @@ export class EmployeeService {
 
   registerUser(employee: Employee){
     const body: Employee = {
-      Username: employee.Username,
+      Id: null,
+      UserName: employee.UserName,
       FullName: employee.FullName,
       Email: employee.Email,
       PhoneNumber: employee.PhoneNumber,
@@ -34,5 +34,21 @@ export class EmployeeService {
     var reqHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('userToken')});
     this.http.get(this.rootUrl + 'api/User', {headers: reqHeader})
     .toPromise().then(res => this.list = res as Employee[])
+  }
+
+  updateUser(employeeID, employee : Employee){
+    const body: Employee = {
+      Id: '',
+      UserName: employee.UserName,
+      FullName: employee.FullName,
+      Email: employee.Email,
+      PhoneNumber: employee.PhoneNumber,
+      Password: employee.Password,
+    }
+    return this.http.post(this.rootUrl + 'api/User/' + employeeID, body);
+  }
+
+  deleteUser(id:number){
+    return this.http.delete(this.rootUrl + 'api/User/' + id);
   }
 }

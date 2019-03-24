@@ -4,34 +4,92 @@
 <div class="borderbottom">
     <h1 class="h2">Add Product</h1> 
   </div>
+  
     <!-- <mat-dialog-content> -->
-        <form class="" action="" method="">
-            <div class="form-group">
-              <label>Username</label>
-              <input type="value" class="form-control" placeholder="Enter Username" name="editusername" cdkFocusInitial >
-            </div>
-            <div class="form-group">
-              <label>Gender</label>
-              <input type="value" class="form-control" placeholder="Enter Gender" name="editgender">
-            </div> 
-            <div class="form-group">
-              <label>Phone</label>
-              <input type="value" class="form-control" placeholder="Enter Phone Number" name="editphone">
-            </div>
-            <div class="form-group">
-              <label>IC</label>
-              <input type="value" class="form-control" placeholder="Enter IC" name="editic">
-            </div>
-            <div class="form-group">
-              <label>Address</label>
-              <input type="value" class="form-control" placeholder="Enter Addresss" name="editaddress">
-            </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" class="form-control" placeholder="Enter Addresss" name="editpassword">
-            </div> 
+        <form #productForm="ngForm" (ngSubmit)="OnSubmit(image, productForm)">
+          <div class="row">
+              <div class="col-md-6">
+                <div class="file-tab panel-body">
+                    <img class="imagePreview" [src]="imageUrl"/>
+                    <br/> 
+                    <label class="btn btn-primary form-group">
+                      Upload<input type="file" accept="image/*" class="uploadFile img" value="Upload Photo" (change)="handleFileInput($event.target.files)" style="width: 0px;height: 0px;overflow: hidden;"
+                      name="image" required>
+                    </label>
+                </div> 
+                <input type="hidden" class="form-control hidden" placeholder="Enter Product Name"
+                      name="ProductId" #ProductId="ngModel" [(ngModel)]="product.ProductId">
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input cdkFocusInitial type="text" class="form-control" placeholder="Enter Product Name"
+                      name="ProductName" #ProductName="ngModel" [(ngModel)]="product.ProductName" 
+                      [class.is-invalid]="ProductName.invalid && ProductName.touched" required>
+                      <small class="text-danger" [class.d-none]="ProductName.valid || ProductName.untouched">Product Name is required</small>
+                </div>
+                <div class="form-group">
+                  <label>Retailer Price</label>
+                  <input type="value" class="form-control" placeholder="Enter Retailer Price" 
+                  name="RetailerPrice" #RetailerPrice="ngModel" [(ngModel)]="product.RetailerPrice" 
+                  [class.is-invalid]="RetailerPrice.invalid && RetailerPrice.touched" required>
+                  <small class="text-danger" [class.d-none]="RetailerPrice.valid || RetailerPrice.untouched">Retailer Price is required</small>
+
+                </div>         
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Sales Price</label>
+                  <input type="value" class="form-control" placeholder="Enter Sales Price" 
+                  name="SalesPrice" #SalesPrice="ngModel" [(ngModel)]="product.SalesPrice" 
+                  [class.is-invalid]="SalesPrice.invalid && SalesPrice.touched" required>
+                  <small class="text-danger" [class.d-none]="SalesPrice.valid || SalesPrice.untouched">Sales Price is required</small>
+                </div>
+                <div class="form-group">
+                  <label>Quantity In Stock</label>
+                  <input type="value" class="form-control" placeholder="Enter Quantity" 
+                  name="QuantityInStock" #QuantityInStock="ngModel" [(ngModel)]="product.QuantityInStock" 
+                  [class.is-invalid]="QuantityInStock.invalid && QuantityInStock.touched" required>
+                  <small class="text-danger" [class.d-none]="QuantityInStock.valid || QuantityInStock.untouched">Quantity is required</small>
+                </div>
+                <div class="form-group">
+                  <label>Category</label>
+                  <input type="value" class="form-control" placeholder="Enter Category" 
+                  name="Category" #Category="ngModel" [(ngModel)]="product.Category" 
+                  [class.is-invalid]="Category.invalid && Category.touched" required>
+                  <small class="text-danger" [class.d-none]="Category.valid || Category.untouched">Category is required</small>
+                </div>
+                <div class="form-group">
+                    <label>Product Brand</label>
+                    <input type="value" class="form-control" placeholder="Enter Product Brand" 
+                    name="ProductBrand" #ProductBrand="ngModel" [(ngModel)]="product.ProductBrand" 
+                  [class.is-invalid]="ProductBrand.invalid && ProductBrand.touched" required>
+                  <small class="text-danger" [class.d-none]="ProductBrand.valid || ProductBrand.untouched">Product Brand is required</small>
+                </div>
+                <div class="form-group">
+                    <label>Product Status</label>
+                    <input type="value" class="form-control" placeholder="Enter Product Status" 
+                    name="ProductStatus" #ProductStatus="ngModel" [(ngModel)]="product.ProductStatus" 
+                  [class.is-invalid]="ProductStatus.invalid && ProductStatus.touched" required>
+                  <small class="text-danger" [class.d-none]="ProductStatus.valid || ProductStatus.untouched">Quantity is required</small>
+                </div>
+                <div class="form-group">
+                  <label>Product Unit Type</label>
+                  <input type="value" class="form-control" placeholder="Enter Unit Type" 
+                  name="ProductUnitType" #ProductUnitType="ngModel" [(ngModel)]="product.ProductUnitType" 
+                  [class.is-invalid]="ProductUnitType.invalid && ProductUnitType.touched" required>
+                  <small class="text-danger" [class.d-none]="ProductUnitType.valid || ProductUnitType.untouched">Product Unit Type is required</small>
+                </div> 
+                <div class="form-group">
+                  <label>Product Description</label>
+                  <input type="value" class="form-control" placeholder="Enter Description" 
+                  name="ProductDescription" #ProductDescription="ngModel" [(ngModel)]="product.ProductDescription" 
+                  [class.is-invalid]="ProductDescription.invalid && ProductDescription.touched" required>
+                  <small class="text-danger" [class.d-none]="ProductDescription.valid || ProductDescription.untouched">Product Description is required</small>
+                </div> 
+              </div> 
+          </div>
+                 
             <!-- <mat-dialog-actions></mat-dialog-actions> -->
-            <button type="submit" class="btn btn-block">Submit</button>
+            <button [disabled]="!productForm.valid" type="submit" class="btn btn-block">Submit</button>
           </form>
         
     <!-- </mat-dialog-content> -->

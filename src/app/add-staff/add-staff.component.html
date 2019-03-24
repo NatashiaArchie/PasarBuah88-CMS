@@ -8,8 +8,8 @@
     <form class="form-container" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
       <div class="textbox">
         <label>Username</label>
-        <input cdkFocusInitial type="text" [class.is-invalid]="Username.invalid && Username.touched" class="form-control validate" placeholder="Enter Username" name="Username" #Username="ngModel" [(ngModel)]="employee.Username" required> 
-        <small class="text-danger" [class.d-none]="Username.valid || Username.untouched">Username is required</small>
+        <input cdkFocusInitial type="text" [class.is-invalid]="UserName.invalid && UserName.touched" class="form-control validate" placeholder="Enter Username" name="UserName" #UserName="ngModel" [(ngModel)]="employee.UserName" required> 
+        <small class="text-danger" [class.d-none]="UserName.valid || UserName.untouched">Username is required</small>
       </div>
       <div class="textbox">
         <label>Full Name</label>

@@ -14,7 +14,7 @@
   </div>
   <div class="">        
     <div class="buttonrow">
-        <button type="button" class="btn btn-sm btn-outline-secondary " (click)="openDialog()">Add Staff</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary " (click)="openDialogAdd()">Add Staff</button>
     </div>
     <div class="">
         <form class="form-inline my-2 my-lg-0 searchbox " action="" method="">
@@ -43,8 +43,8 @@
         <td>{{emp.Email}}</td>
         <td>{{emp.PhoneNumber}}</td>
         <td>
-          <button type="button" class="btn btn-sm btn-outline-info actionButton " >Edit</button>
-          <button type="button" class="btn btn-sm btn-outline-danger actionButton" >Delete</button>
+          <button type="button" class="btn btn-sm btn-outline-info actionButton " (click)="openDialogEdit(emp)">Edit</button>
+          <button type="button" class="btn btn-sm btn-outline-danger actionButton" (click)="onDelete(emp.Id)">Delete</button>
         </td>
       </tr>
       

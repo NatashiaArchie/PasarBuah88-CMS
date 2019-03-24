@@ -4,6 +4,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { AddStaffComponent } from '../add-staff/add-staff.component';
 import { LoginComponent } from '../login/login.component';
 import { EmployeeService } from '../shared/employee.service';
+import { Employee } from '../shared/employee.model';
+import { EditStaffComponent } from '../edit-staff/edit-staff.component';
 
 @Component({
   selector: 'app-manage-staff',
@@ -23,15 +25,27 @@ export class ManageStaffComponent implements OnInit {
     this.employeeService.refreshList();
   }
 
-  openDialog() {
+  openDialogAdd() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '400px';
+    dialogConfig.height = '400px';
+    this.dialog.open(AddStaffComponent, dialogConfig);
+  }
+
+  openDialogEdit(emp : Employee) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
     dialogConfig.height = '400px';
     dialogConfig.disableClose = true;
+    dialogConfig.data = emp;
     this.dialog.open(AddStaffComponent, dialogConfig);
+  }
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    // });
+  onDelete(id: number){
+    this.employeeService.deleteUser(id)
+    .subscribe((data) => {
+      this.employeeService.refreshList();
+    });
+    
   }
 }
