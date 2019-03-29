@@ -23,6 +23,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './auth/auth.guard';
 import { EditStaffComponent } from './edit-staff/edit-staff.component';
 import { ProductService } from './shared/product.service';
+import { CategoryComponent } from './category/category.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { CategoryService } from './shared/category.service';
+import { HomeLayoutComponent } from './layout/home-layout/home-layout.component';
+import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,11 @@ import { ProductService } from './shared/product.service';
     AddStaffComponent,
     AddProductComponent,
     RegisterComponent,
-    EditStaffComponent
+    EditStaffComponent,
+    CategoryComponent,
+    AddCategoryComponent,
+    HomeLayoutComponent,
+    LoginLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -49,8 +58,8 @@ import { ProductService } from './shared/product.service';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [EmployeeService, AuthGuard, ProductService],
+  providers: [EmployeeService, AuthGuard, ProductService, CategoryService],
   bootstrap: [AppComponent],
-  entryComponents: [AddStaffComponent, EditStaffComponent, AddProductComponent]
+  entryComponents: [AddStaffComponent, EditStaffComponent, AddProductComponent, AddCategoryComponent]
 })
 export class AppModule { }

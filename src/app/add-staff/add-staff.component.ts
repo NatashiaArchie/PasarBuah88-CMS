@@ -26,14 +26,17 @@ export class AddStaffComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.employee = {
-      Id: '',
-      UserName:'',
-      FullName:'',
-      Email:'',
-      PhoneNumber:'',
-      Password:''
+    if (this.employee == null) {
+      this.employee = {
+        Id: '',
+        UserName:'',
+        FullName:'',
+        Email:'',
+        PhoneNumber:'',
+        Password:''
+      }
     }
+    
   }
 
   OnSubmit(form: NgForm) {
@@ -58,19 +61,17 @@ export class AddStaffComponent implements OnInit {
       console.log(this.data);
       console.log(form.value);
       debugger;
-      this.employeeService.updateUser(this.data.Id, form.value)
+      this.employeeService.updateUser(form.value)
       .subscribe((data:any) => {
-        if (data.Succeeded == true){
+        //if (data.Succeeded == true){
           this.toastr.success('Employee information has been updated sucessful');
           this.dialogRef.close();
-        }
-        else {
-          this.toastr.error(data.Errors);
-          console.log(data.Errors);
-        }
+        //}
+        // else {
+        //   this.toastr.error(data.Errors);
+        //   console.log(data.Errors);
+        // }
       })
-      
     }
-    
   }
 }

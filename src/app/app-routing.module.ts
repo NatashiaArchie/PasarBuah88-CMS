@@ -12,16 +12,33 @@ import { ManageStaffComponent } from './manage-staff/manage-staff.component';
 import { AddStaffComponent } from './add-staff/add-staff.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth/auth.guard';
+import { CategoryComponent } from './category/category.component';
+import { HomeLayoutComponent } from './layout/home-layout/home-layout.component';
+import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'navigation', component: NavigationComponent},
-  {path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard]},
-  {path: 'product', component: ProductComponent,canActivate: [AuthGuard]},
-  {path: 'order', component: OrderComponent,canActivate: [AuthGuard]},
-  {path: 'voucher', component: VoucherComponent,canActivate: [AuthGuard]},
-  {path: 'report', component: ReportComponent,canActivate: [AuthGuard]},
-  {path: 'manageStaff', component: ManageStaffComponent,canActivate: [AuthGuard]}
+
+  {path:'',
+  component: HomeLayoutComponent,
+  children: [
+    {path: 'navigation', component: NavigationComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'product', component: ProductComponent},
+    {path: 'category', component: CategoryComponent},
+    {path: 'order', component: OrderComponent},
+    {path: 'voucher', component: VoucherComponent},
+    {path: 'report', component: ReportComponent},
+    {path: 'manageStaff', component: ManageStaffComponent}
+  ]},
+  {path: '',
+  component: LoginLayoutComponent,
+  children: [
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
+  ]}
+
+
+  
+  
 ];
 
 @NgModule({

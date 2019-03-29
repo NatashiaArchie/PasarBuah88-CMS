@@ -45,7 +45,6 @@ export class ManageStaffComponent implements OnInit {
     this.employeeService.deleteUser(id)
     .subscribe((data) => {
       this.employeeService.refreshList();
-    });
-    
+    });  
   }
 }

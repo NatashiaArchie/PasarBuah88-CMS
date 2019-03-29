@@ -17,7 +17,6 @@
     width: 100vw;
     height: 100vh;  
     z-index:-1;
-    margin: 25px;
     
 }
 
@@ -35,56 +34,4 @@
     box-shadow: -1px 1px 43px 12px rgba(0,0,0,0.75);
     background-color: yellowgreen;
     border-radius: 10px;
-}
-
-* {
-    margin: 0px;
-    padding: 0px;
-    font-family: sans-serif;
-}
-
-.sidebar {
-    position: fixed;
-    width: 200px;
-    height: 100%;
-    background: #212529;
-    margin-top: 56px;
-        
-}
-
-.sidebar ul li {
-    color: rgba(230,230,230,0.9);
-    list-style: none;
-    padding: 15px 10px;
-    border-bottom: 1px solid rgba(100,100,100,0.3);
-}
-
-.navibar {
-    width: 100%;
-    padding: 0px;
-    position: fixed;
-}
-
-.table {
-    margin-top: 10px;
-    margin-left: 115px;
-    width: 80%;
-}
-
-.title {
-    color: black;
-    font-family: sans-serif;
-    text-align: center;
-}
-
-.profile {
-    width: 100%;
-    text-align: center;
-}
-
-#content {
-    margin-left: 200px;
-    height: 100%;
-    padding: 15px;
- 
 }

@@ -7,7 +7,7 @@ export class NavigationService {
 
   visible: boolean;
 
-  constructor() { this.visible = false; }
+  constructor() { }
 
   hide() { this.visible = false; }
   show() { this.visible = true; }

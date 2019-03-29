@@ -14,14 +14,14 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
   isLoginError: boolean = false;
   constructor( 
-    public navigation: NavigationService,
+    //public navigation: NavigationService,
     private employeeService: EmployeeService,
     private router: Router,
     public toastr: ToastrService
     ) { }
 
   ngOnInit() {
-    this.navigation.hide();
+    //this.navigation.hide();
   }
 
   OnSubmit(username, password){

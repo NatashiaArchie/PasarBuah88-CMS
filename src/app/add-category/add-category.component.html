@@ -1,0 +1,27 @@
+<button type="button" class="close" aria-label="Close" [mat-dialog-close]="true">
+  <span aria-hidden="false">&times;</span>
+</button>
+<div class="borderbottom">
+  <h1 class="h2">Add Category</h1> 
+</div>
+
+<form class="form-container" #addCategory="ngForm" (ngSubmit)="OnSubmit(addCategory)">
+  <input type="hidden" class="form-control hidden" name="CategoryId" #CategoryId="ngModel" [(ngModel)]="category.CategoryId">
+<div class="textbox" style="margin-top: 40px">
+  <label>Category Name</label>
+  <input cdkFocusInitial type="text" class="form-control validate" placeholder="Enter Category Name"
+  name="CategoryName" #CategoryName="ngModel" [(ngModel)]="category.CategoryName" 
+  [class.is-invalid]="CategoryName.invalid && CategoryName.touched" required>
+  <small class="text-danger" [class.d-none]="CategoryName.valid || CategoryName.untouched">Category name is required</small>
+
+  <div class="textbox" style="margin-top: 50px">
+    <button [disabled]="!addCategory.valid"type="submit" class="btn btn-success btn-block">Submit</button>
+  </div>
+</div>
+</form>
+  
+      
+  <!-- </mat-dialog-content> -->
+  
+
+

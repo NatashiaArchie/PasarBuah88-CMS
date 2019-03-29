@@ -26,7 +26,7 @@ export class EmployeeService {
   userAuthentication(username, password){
     var data = "username=" + username + "&password=" + password + "&grant_type=password";
     var reqHeader = new HttpHeaders({'Content-Type':'application/x-www-urlencoded'});
-    return this.http.post(this.rootUrl+ '/token', data, {headers: reqHeader});
+    return this.http.post(this.rootUrl+ 'token', data, {headers: reqHeader});
     console.log(reqHeader);
   }
 
@@ -36,16 +36,16 @@ export class EmployeeService {
     .toPromise().then(res => this.list = res as Employee[])
   }
 
-  updateUser(employeeID, employee : Employee){
+  updateUser(employee : Employee){
     const body: Employee = {
-      Id: '',
+      Id: employee.Id,
       UserName: employee.UserName,
       FullName: employee.FullName,
       Email: employee.Email,
       PhoneNumber: employee.PhoneNumber,
       Password: employee.Password,
     }
-    return this.http.post(this.rootUrl + 'api/User/' + employeeID, body);
+    return this.http.put(this.rootUrl + 'api/User/' + employee.Id, body);
   }
 
   deleteUser(id:number){

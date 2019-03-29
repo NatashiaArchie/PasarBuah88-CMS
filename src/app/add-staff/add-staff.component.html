@@ -6,6 +6,8 @@
 </div>
   <!-- <mat-dialog-content> -->
     <form class="form-container" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+        <input type="hidden" class="form-control hidden" placeholder="Enter Product Name"
+        name="Id" #Id="ngModel" [(ngModel)]="employee.Id">
       <div class="textbox">
         <label>Username</label>
         <input cdkFocusInitial type="text" [class.is-invalid]="UserName.invalid && UserName.touched" class="form-control validate" placeholder="Enter Username" name="UserName" #UserName="ngModel" [(ngModel)]="employee.UserName" required> 

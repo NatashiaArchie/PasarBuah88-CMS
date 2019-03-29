@@ -30,13 +30,14 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit( ) {
     if (this.product == null) {
+      this.imageUrl = "../../assets/images/uploadimages.jpg";
       this.product = {
         ProductId: null,
-        //ImageName: null,
+        ImageName: null,
         ProductName: '',
-        RetailerPrice: 0,
-        SalesPrice: 0,
-        QuantityInStock: 0,
+        RetailerPrice: null,
+        SalesPrice: null,
+        QuantityInStock: null,
         Category: '',
         ProductBrand: '',
         ProductStatus: '',
@@ -44,45 +45,45 @@ export class AddProductComponent implements OnInit {
         ProductDescription: '',
        }
     }
+    else {
+      //var productImage = this.product.ImageName;
+      // var reader = new FileReader();
+      // var aa = reader.readAsDataURL(productImage);
+      // console.log(aa);
+    }
    
   }
 
   handleFileInput(file: FileList){
     this.fileToUpload = file.item(0);
-
     var reader = new FileReader();
     reader.onload = (event:any) => {
       this.imageUrl = event.target.result;
     }
     reader.readAsDataURL(this.fileToUpload);
-    //debugger
-    //this.product.ImageName = this.fileToUpload;
+    
   }
 
   OnSubmit(Image: any, form: NgForm) {
-    debugger;
+    //debugger;
     console.log(form.value);
     if (form.value.ProductId == null) {
       this.productService.addProduct(this.fileToUpload, form.value)
         .subscribe((data:any) => {
-        console.log(form.value)
-          form.reset();
-          this.toastr.success('Product has been added successful');
-          this.dialogRef.close();
-          //this.router.navigate(['/product']);
-          //this.productService.refreshList();   
+          this.productService.refreshList();
+            form.reset();
+            this.toastr.success('Product has been added successful');
+            this.dialogRef.close();
     });
     }
     else {
       this.productService.editProduct(this.fileToUpload, form.value)
         .subscribe((data:any) => {
-        console.log(form.value)
-          form.reset();
-          this.toastr.success('Product has been updated successful');
-          this.dialogRef.close();
-          this.productService.refreshList();     
+          this.productService.refreshList();
+            form.reset();
+            this.toastr.success('Product has been updated successful');
+            this.dialogRef.close();    
     });
     }
-    this.productService.refreshList();
   }
 }

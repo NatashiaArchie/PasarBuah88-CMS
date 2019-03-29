@@ -40,21 +40,22 @@ export class ProductService {
     return this.http.post(this.rootUrl + 'api/AddProduct', formData);
   }
 
-  editProduct(fileToUpload: File,product: Product){
-    const formData: FormData = new FormData();
-    formData.append('ProductId', product.ProductId.toString());
-    formData.append('ImageName',fileToUpload, fileToUpload.name);
-    formData.append('ProductName', product.ProductName);
-    formData.append('RetailerPrice', product.RetailerPrice.toString());
-    formData.append('SalesPrice', product.SalesPrice.toString());
-    formData.append('QuantityInStock', product.QuantityInStock.toString());
-    formData.append('Category', product.Category);
-    formData.append('ProductBrand', product.ProductBrand);
-    formData.append('ProductStatus', product.ProductStatus);
-    formData.append('ProductUnitType', product.ProductUnitType);
-    formData.append('ProductDescription', product.ProductDescription);
+  editProduct(fileToUpload: File, product: Product){
+    const body: Product = {
+        ProductId: product.ProductId,
+        ImageName: fileToUpload,
+        ProductName: product.ProductName,
+        RetailerPrice: product.RetailerPrice,
+        SalesPrice: product.SalesPrice,
+        QuantityInStock: product.QuantityInStock,
+        Category: product.Category,
+        ProductBrand: product.ProductBrand,
+        ProductStatus: product.ProductStatus,
+        ProductUnitType: product.ProductUnitType,
+        ProductDescription: product.ProductDescription
+      }
 
-    return this.http.put(this.rootUrl + 'api/Product/'+product.ProductId, formData)
+    return this.http.put(this.rootUrl + 'api/Product/'+product.ProductId, body)
   }
 
   refreshList() {
