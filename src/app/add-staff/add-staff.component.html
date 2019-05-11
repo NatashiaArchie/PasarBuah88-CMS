@@ -1,44 +1,44 @@
 <button type="button" class="close" aria-label="Close" [mat-dialog-close]="true">
-    <span aria-hidden="false">&times;</span>
-  </button>
+  <span aria-hidden="false">&times;</span>
+</button>
 <div class="borderbottom">
-  <h1 class="h2">Add Staff</h1>
+<h1 class="h2">Add Staff</h1>
 </div>
-  <!-- <mat-dialog-content> -->
-    <form class="form-container" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
-        <input type="hidden" class="form-control hidden" placeholder="Enter Product Name"
-        name="Id" #Id="ngModel" [(ngModel)]="employee.Id">
-      <div class="textbox">
-        <label>Username</label>
-        <input cdkFocusInitial type="text" [class.is-invalid]="UserName.invalid && UserName.touched" class="form-control validate" placeholder="Enter Username" name="UserName" #UserName="ngModel" [(ngModel)]="employee.UserName" required> 
-        <small class="text-danger" [class.d-none]="UserName.valid || UserName.untouched">Username is required</small>
-      </div>
-      <div class="textbox">
-        <label>Full Name</label>
-        <input type="text" [class.is-invalid]="FullName.invalid && FullName.touched" class="form-control" placeholder="Enter Full Name" name="FullName" #FullName="ngModel" [(ngModel)]="employee.FullName" required>
-        <small class="text-danger" [class.d-none]="FullName.valid || FullName.untouched">Full name is required</small>
-      </div>
-      <div class="textbox">
-        <label>Email</label>
-        <input type="text" [class.is-invalid]="Email.invalid && Email.touched" class="form-control" placeholder="Enter Email Address" name="Email" #Email="ngModel" [(ngModel)]="employee.Email" required [pattern]="emailPattern"> 
-        <small class="text-danger" [class.d-none]="Email.valid || Email.untouched">Invalid Email</small>
-      </div>
-      <div class="textbox">
-        <label>Phone Number</label>
-        <input type="text" [class.is-invalid]="PhoneNumber.invalid && PhoneNumber.touched" class="form-control" placeholder="Enter Phone Number" name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="employee.PhoneNumber" required [pattern]="phonePattern">
-        <small class="text-danger" [class.d-none]="PhoneNumber.valid || PhoneNumber.untouched">Invalid Phone Number</small>
-      </div>
-      <div class="textbox">
-        <label>Password</label>
-        <input type="password" class="form-control" placeholder="Enter Password" name="Password" #Password="ngModel" [(ngModel)]="employee.Password" required>
-      </div>  
-      <div class="textbox">
-        <button [disabled]="!userRegistrationForm.valid"type="submit" class="btn btn-success btn-block">Submit</button>
-      </div>
-      
-    </form>
-      
-  <!-- </mat-dialog-content> -->
-  
+<!-- <mat-dialog-content> -->
+  <form class="form-container" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(userRegistrationForm)">
+      <input type="hidden" class="form-control hidden" placeholder="Enter Product Name"
+      name="Id" #Id="ngModel" [(ngModel)]="employee.Id">
+    <div class="textbox">
+      <label>Username</label>
+      <input cdkFocusInitial type="text" [class.is-invalid]="UserName.invalid && UserName.touched" class="form-control validate" placeholder="Enter Username" name="UserName" #UserName="ngModel" [(ngModel)]="employee.UserName" required> 
+      <small class="text-danger" [class.d-none]="UserName.valid || UserName.untouched">Username is required</small>
+    </div>
+    <div class="textbox">
+      <label>Full Name</label>
+      <input type="text" [class.is-invalid]="FullName.invalid && FullName.touched" class="form-control" placeholder="Enter Full Name" name="FullName" #FullName="ngModel" [(ngModel)]="employee.FullName" required>
+      <small class="text-danger" [class.d-none]="FullName.valid || FullName.untouched">Full name is required</small>
+    </div>
+    <div class="textbox">
+      <label>Email</label>
+      <input type="text" [class.is-invalid]="Email.invalid && Email.touched" class="form-control" placeholder="Enter Email Address" name="Email" #Email="ngModel" [(ngModel)]="employee.Email" required [pattern]="emailPattern"> 
+      <small class="text-danger" [class.d-none]="Email.valid || Email.untouched">Invalid Email</small>
+    </div>
+    <div class="textbox">
+      <label>Phone Number</label>
+      <input type="text" [class.is-invalid]="PhoneNumber.invalid && PhoneNumber.touched" class="form-control" placeholder="Enter Phone Number" name="PhoneNumber" #PhoneNumber="ngModel" [(ngModel)]="employee.PhoneNumber" required [pattern]="phonePattern">
+      <small class="text-danger" [class.d-none]="PhoneNumber.valid || PhoneNumber.untouched">Invalid Phone Number</small>
+    </div>
+    <div class="textbox">
+      <label>Password</label>
+      <input type="password" class="form-control" placeholder="Enter Password" name="Password" #Password="ngModel" [(ngModel)]="employee.Password" required>
+    </div>  
+    <div class="textbox">
+      <button [disabled]="!userRegistrationForm.valid"type="submit" class="btn btn-success btn-block">Submit</button>
+    </div>
+    
+  </form>
+    
+<!-- </mat-dialog-content> -->
+
 
 

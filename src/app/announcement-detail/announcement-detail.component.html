@@ -1,0 +1,24 @@
+<button type="button" class="close" aria-label="Close" [mat-dialog-close]="true">
+  <span aria-hidden="false">&times;</span>
+</button>
+<div class="borderbottom">
+  <h1 class="h2">Announcement Detail</h1> 
+</div>
+
+<img class="imagePreview" [src]="ImageUrl"/>
+
+
+<div class="column" style ="margin-left: 0px">
+  <div class="row" style ="margin-left: 0px">
+    <h4 class="h4">{{Title}}</h4>
+  </div>
+  <br>
+  <small> Description: <br>{{Description}} </small><br>
+  <small> Status: {{Status}} </small><br>
+  <small> Valid until: {{StartDate | date: 'dd MMM yyyy'}}  to  {{EndDate| date: 'dd MMM yyyy'}} </small>
+</div>
+
+<!-- <h5 class="h5">{{productName}}</h5>  -->
+
+
+

@@ -1,0 +1,61 @@
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 borderbottom">
+    <h1 class="h2">Announcement</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+      <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+        <span data-feather="calendar"></span>
+        This week
+      </button>
+    </div>
+  </div>
+  <div class="">        
+    <div class="buttonrow">
+        <button type="button" class="btn btn-sm btn-outline-secondary " (click)="openDialog()">Add New Announcement</button>
+    </div>
+    <div class="">
+        <form class="form-inline my-2 my-lg-0 searchbox " action="" method="">
+          <div class="buttonrow">
+            <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search">
+            <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search"> -->
+            <button type="button" class="btn btn-sm btn-outline-secondary " >Search</button>
+          </div>
+        </form>
+        
+    </div>
+</div>
+<table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <!-- <th>#</th> -->
+        <th>No.</th>
+        <th>Announcement</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let a of announcementService.list; let i = index">
+        <td>{{i + 1}}</td>
+        <a (click)="openDialogDetail(a)"><td>{{a.Title}}</td></a>
+        <td>{{a.StartDate | date: 'dd-MMM-yyyy'}}</td>
+        <td>{{a.EndDate | date: 'dd-MMM-yyyy'}}</td>
+        <td>{{a.Status}}</td>
+        <td>
+          <button type="button" class="btn btn-sm btn-outline-info actionButton " (click)="openDialogEdit(a)">Edit</button>
+          <button type="button" class="btn btn-sm btn-outline-danger actionButton" (click)="onDelete(a.CategoryId)">Delete</button>
+        </td>
+      </tr>
+      
+  </tbody>
+  </table>
+</main>
+
+
+
+

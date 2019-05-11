@@ -1,0 +1,71 @@
+<button type="button" class="close" aria-label="Close" [mat-dialog-close]="true">
+  <span aria-hidden="false">&times;</span>
+</button>
+<div class="borderbottom">
+  <h1 class="h2">Announcement</h1> 
+</div>
+
+<form class="form-container" #announcementForm="ngForm" (ngSubmit)="OnSubmit(announcementForm)">
+
+  <img class="imagePreview" [src]="imageUrl"/>
+
+  <div>
+    <label class="btn btnn btn-primary form-group textbox" style="margin-bottom: 0px;margin-top: 0px">
+        Upload<input type="file" accept="image/*" class="uploadFile img" value="Upload Photo" (change)="handleFileInput($event.target.files)" style="width: 0px;height: 0px;overflow: hidden;"
+        name="image" #image="ngModel" [(ngModel)]="announcement.image" [class.is-invalid]="image.invalid && image.touched" required>           
+      </label>
+      <small class="text-danger" [class.d-none]="image.valid || image.untouched">Image is required</small>
+  </div>  
+  
+  <div class="form-group" style="margin-top: 10px">
+    <label>Title</label>
+    <input cdkFocusInitial type="text" class="form-control" placeholder="Enter Announcement Title"
+    name="Title" #Title="ngModel" [(ngModel)]="announcement.Title" 
+    [class.is-invalid]="Title.invalid && Title.touched" required>
+    <small class="text-danger" [class.d-none]="Title.valid || Title.untouched">Announcement title is required</small>
+  </div>
+  
+  <div class="form-group" style="margin-top: 10px">
+    <label>Description</label>
+    <input type="text" class="form-control" placeholder="Enter Description"
+    name="Description" #Description="ngModel" [(ngModel)]="announcement.Description" 
+    [class.is-invalid]="Description.invalid && Description.touched" required>
+    <small class="text-danger" [class.d-none]="Description.valid || Description.untouched">Description is required</small>
+  </div>
+
+  
+  <label>Status</label>
+  <div class="form-group">    
+    <select class="btn btn-dropdown btn-outline-secondary" 
+        name="Status" #Status="ngModel" [(ngModel)]="announcement.Status" 
+        [class.is-invalid]="Status.invalid && Status.touched" required>
+        <option  *ngFor="let s of status" [value]="s.value">{{s.value}}</option>
+    </select>
+    <small class="text-danger" [class.d-none]="Status.valid || Status.untouched">Status is required</small>
+  </div>
+
+  <mat-form-field style="margin-right: 20px">
+    <input matInput name="StartDate" #StartDate="ngModel" [(ngModel)]="announcement.StartDate" 
+    [class.is-invalid]="StartDate.invalid && StartDate.touched" [matDatepicker]="picker1" placeholder="Choose start date" required> 
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="EndDate" #EndDate="ngModel" [(ngModel)]="announcement.EndDate" 
+    [class.is-invalid]="EndDate.invalid && EndDate.touched" [matDatepicker]="picker2" placeholder="Choose end date" required> 
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <div class="textbox">
+    <button [disabled]="!announcementForm.valid"type="submit" class="btn btn-success btn-block">Submit</button>
+  </div>
+
+</form>
+
+
+
+
+
+

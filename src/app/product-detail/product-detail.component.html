@@ -1,0 +1,21 @@
+<button type="button" class="close" aria-label="Close" [mat-dialog-close]="true">
+    <span aria-hidden="false">&times;</span>
+  </button>
+  <div class="borderbottom">
+    <h1 class="h2">Product Detail</h1> 
+  </div>
+  
+  <img class="imagePreview" [src]="imageUrl"/>
+  <div class="row" style ="margin-left: 0px">
+      <h4 class="h4">RM {{productPrice | number:'1.2-2'}}</h4><small style="padding-top: 8px;" >/ {{unitType}}</small>
+  </div>
+  <h5 class="h5">{{productName}}</h5> 
+  <small> {{productDescription}} </small>
+  
+    
+        
+    <!-- </mat-dialog-content> -->
+    
+  
+  
+  
