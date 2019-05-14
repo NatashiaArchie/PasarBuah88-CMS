@@ -1,6 +1,6 @@
 export class Product {
-    ProductId: number;
-    //ImageName: File;
+    ProductId?: number;
+    ImageUrl: string;
     ProductName: string;
     RetailerPrice: number;
     SalesPrice: number;

@@ -1,0 +1,119 @@
+.info-box {
+    display: block;
+    min-height: 90px;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.info-box-icon {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+    display: block;
+    float: left;
+    height: 90px;
+    width: 90px;
+    text-align: center;
+    font-size: 45px;
+    line-height: 90px;
+    background: yellowgreen;
+    // background: rgba(0,0,0,0.2);
+}
+
+.info-box-content {
+    padding: 5px 10px;
+    margin-left: 90px;
+}
+
+.info-box-text {
+    text-transform: uppercase;
+}
+
+.progress-description, .info-box-text {
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.info-box .progress {
+    background: rgba(0,0,0,0.2);
+    margin: 5px -10px 5px -10px;
+    height: 2px;
+}
+
+.progress, .progress>.progress-bar {
+    box-shadow: none;
+}
+
+.bg-yellow {
+    background-color: #f39c12 !important;
+}
+
+.bg-red {
+    background-color: #DD4B39 !important;
+}
+
+.bg-green {
+    background-color: #00A65A !important;
+}
+
+.bg-yellowgreen {
+    background-color: #f1f1f1 !important;
+}
+
+.font-color {
+    color: #6B8F23
+}
+
+.iframe-container {
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: relative;
+  }
+   
+  .iframe-container iframe {
+     border: 0;
+     height: 50%;
+     left: 0;
+     position: absolute;
+     top: 0;
+     width: 100%;
+  }
+   
+  /* 4x3 Aspect Ratio */
+  .iframe-container-4x3 {
+    padding-top: 30%;
+  }
+
+a {
+    color: #8cba2d;
+}
+
+a:hover{
+    color: #709524;
+}
+
+.sub-title {
+    color: #709524;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    /* background-color: rgba(0,0,0,.05); */
+    background-color: #e0f0c1;
+}
+
+.table td, .table th {
+    border-top: 1px solid #e0f0c1;
+}

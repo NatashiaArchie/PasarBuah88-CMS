@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { ProductService } from '../shared/product.service';
 import { Product } from '../shared/product.model';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
 
 @Component({
   selector: 'app-product',
@@ -43,5 +44,13 @@ export class ProductComponent implements OnInit {
     .subscribe((data) => {
       this.productService.refreshList();
     })
+  }
+
+  openDialogDetail(product: Product) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.height = '500px';
+    dialogConfig.data = product;
+    this.dialog.open(ProductDetailComponent, dialogConfig);
   }
 }

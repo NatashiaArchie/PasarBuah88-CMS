@@ -14,7 +14,8 @@ export class CategoryService {
   addCategory(category: Category){
     const body: Category = {
       CategoryId: null,
-      CategoryName: category.CategoryName
+      CategoryName: category.CategoryName,
+      ImageUrl: category.ImageUrl
     }
     return this.http.post(this.rootUrl + 'api/Category', body);
   }
@@ -28,7 +29,8 @@ export class CategoryService {
   editCategory(category: Category){
     const body: Category = {
       CategoryId: category.CategoryId,
-      CategoryName: category.CategoryName
+      CategoryName: category.CategoryName,
+      ImageUrl: category.ImageUrl
     }
 
     return this.http.put(this.rootUrl + 'api/Category/' + category.CategoryId, body);

@@ -1,5 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.table-striped tbody tr:nth-of-type(odd) {
+    /* background-color: rgba(0,0,0,.05); */
+    background-color: #e0f0c1;
+}
+
+.table td, .table th {
+    border-top: 1px solid #e0f0c1;
+}
 
 .searchbox input[type=text]:focus:not([readonly]) {
     border: 1px solid #6c757d;
@@ -31,3 +39,4 @@
 .actionButton {
     margin-left: 10px;
 }
+

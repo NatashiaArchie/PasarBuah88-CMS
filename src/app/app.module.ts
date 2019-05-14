@@ -28,6 +28,19 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { CategoryService } from './shared/category.service';
 import { HomeLayoutComponent } from './layout/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
+import { AddAnnouncementComponent } from './add-announcement/add-announcement.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { AnnouncementDetailComponent } from './announcement-detail/announcement-detail.component';
+import { AnnouncementService } from './shared/announcement.service';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+
+// import * as firebase from 'firebase';
+
+// firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -47,7 +60,12 @@ import { LoginLayoutComponent } from './layout/login-layout/login-layout.compone
     CategoryComponent,
     AddCategoryComponent,
     HomeLayoutComponent,
-    LoginLayoutComponent
+    LoginLayoutComponent,
+    AddAnnouncementComponent,
+    OrderDetailComponent,
+    ProductDetailComponent,
+    AnnouncementComponent,
+    AnnouncementDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,10 +74,12 @@ import { LoginLayoutComponent } from './layout/login-layout/login-layout.compone
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [EmployeeService, AuthGuard, ProductService, CategoryService],
+  providers: [EmployeeService, AuthGuard, ProductService, CategoryService, AnnouncementService],
   bootstrap: [AppComponent],
-  entryComponents: [AddStaffComponent, EditStaffComponent, AddProductComponent, AddCategoryComponent]
+  entryComponents: [AddStaffComponent, EditStaffComponent, AddProductComponent, AddCategoryComponent, AddAnnouncementComponent ,AnnouncementDetailComponent, OrderDetailComponent, ProductDetailComponent]
 })
 export class AppModule { }

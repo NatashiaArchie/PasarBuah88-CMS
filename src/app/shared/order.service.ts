@@ -4,6 +4,8 @@ import { OrderDetail } from './order-detail.model';
 import { Order } from './order.model';
 import { OrderDetailProduct } from './order-detail-product.model';
 import { OrderAddress } from './order-address.model';
+import 'rxjs/Rx';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class OrderService {
   orderDetailProductList: OrderDetailProduct[];
   orderAddressList: OrderAddress[];
   constructor(
-    public http: HttpClient
+    public http: HttpClient,
   ) { }
 
   refreshList(){
@@ -40,5 +42,11 @@ export class OrderService {
     var reqHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')});
     this.http.get(this.rootUrl + 'api/OrderAddress', {headers: reqHeader} )
     .toPromise().then(res => this.orderAddressList = res as OrderAddress[])
+  }
+
+  getOrderMap() {
+    var reqHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')});
+    return this.http.get(this.rootUrl + 'api/Orders', {headers: reqHeader})
+    .map(result => result);
   }
 }

@@ -7,6 +7,10 @@ import { ProductService } from '../shared/product.service';
 import { Employee } from '../shared/employee.model';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { CategoryService } from '../shared/category.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -17,23 +21,43 @@ export class AddProductComponent implements OnInit {
   imageUrl: string = "../../assets/images/uploadimages.jpg";
   product : Product;
   fileToUpload : File = null;
+  unit: number;
+  type: string;
+  basePath = '/product';
+  statuss: string;
+  numberPattern = '^[0-9]+(\.[0-9]{1,2})?$'
+  status = [
+    {value: 'Active'},
+    {value: 'Inactive'}
+  ]
+  unitType = [
+    {value: 'ml'},
+    {value: 'L'},
+    {value: 'gram'},
+    {value: 'Kg'},
+    {value: 'packet'},
+    {value: 'bundle'},
+  ]
   constructor(
     public dialog: MatDialog,
     public productService : ProductService,
     public toastr: ToastrService,
     private router: Router,
     public dialogRef : MatDialogRef<AddProductComponent>,
+    public fireDatabase :  AngularFireDatabase,
+    private categoryService: CategoryService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { 
     this.product = this.data;
   }
 
   ngOnInit( ) {
+    this.categoryService.refreshList();
     if (this.product == null) {
       this.imageUrl = "../../assets/images/uploadimages.jpg";
       this.product = {
         ProductId: null,
-        ImageName: null,
+        ImageUrl: null,
         ProductName: '',
         RetailerPrice: null,
         SalesPrice: null,
@@ -46,10 +70,11 @@ export class AddProductComponent implements OnInit {
        }
     }
     else {
-      //var productImage = this.product.ImageName;
-      // var reader = new FileReader();
-      // var aa = reader.readAsDataURL(productImage);
-      // console.log(aa);
+      this.imageUrl = this.product.ImageUrl;
+      var res = this.product.ProductUnitType.split(" ");
+      this.unit = parseInt(res[0]);
+      this.statuss = this.product.ProductStatus;
+      this.type = res[1].toString();
     }
    
   }
@@ -65,25 +90,50 @@ export class AddProductComponent implements OnInit {
   }
 
   OnSubmit(Image: any, form: NgForm) {
-    //debugger;
+    debugger;
     console.log(form.value);
-    if (form.value.ProductId == null) {
-      this.productService.addProduct(this.fileToUpload, form.value)
-        .subscribe((data:any) => {
-          this.productService.refreshList();
-            form.reset();
-            this.toastr.success('Product has been added successful');
-            this.dialogRef.close();
-    });
-    }
-    else {
-      this.productService.editProduct(this.fileToUpload, form.value)
-        .subscribe((data:any) => {
-          this.productService.refreshList();
-            form.reset();
-            this.toastr.success('Product has been updated successful');
-            this.dialogRef.close();    
-    });
-    }
+    
+    const metaData = {'contentType': this.fileToUpload.type};
+    var storageRef = firebase.storage().ref();
+    var uploadProduct = storageRef.child(`${this.basePath}/${this.fileToUpload.name}`)
+    .put(this.fileToUpload, metaData)
+      .then((result) => {
+
+        //get download Url
+        storageRef.child(`${this.basePath}/${this.fileToUpload.name}`).getDownloadURL()
+        .then((url) => {
+          console.log(url);
+          form.value.ImageUrl = url;
+          form.value.ProductUnitType = form.value.unit + ' ' + form.value.type;
+          //add to database
+          //debugger;
+          console.log(form.value);
+          if (form.value.ProductId == null) {
+            this.productService.addProduct(form.value)
+              .subscribe((data:any) => {
+                this.productService.refreshList();
+                  form.reset();
+                  this.toastr.success('Product has been added successful');
+                  this.dialogRef.close();
+          });
+          }
+          else {
+            this.productService.editProduct(form.value)
+              .subscribe((data:any) => {
+                this.productService.refreshList();
+                  form.reset();
+                  this.toastr.success('Product has been updated successful');
+                  this.dialogRef.close();    
+          });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      });
+    console.log("Uploading: ", this.fileToUpload.name);
+    console.log(form.value);
   }
+  
+    
 }

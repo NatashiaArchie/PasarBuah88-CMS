@@ -12,4 +12,104 @@
       </button>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="info-box bg-yellowgreen">
+          <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+      
+          <div class="info-box-content">
+            <span class="info-box-text font-color">Product</span>
+            <span class="info-box-number font-color">5,200</span>
+      
+            <div class="progress">
+              <div class="progress-bar" style="width: 50%"></div>
+            </div>
+            <span class="progress-description font-color">
+                  50% Increase in 30 Days
+                </span>
+          </div>
+        </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div class="info-box bg-yellowgreen">
+          <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+      
+          <div class="info-box-content">
+            <span class="info-box-text font-color">Sales</span>
+            <span class="info-box-number font-color">5,200</span>
+      
+            <div class="progress">
+              <div class="progress-bar" style="width: 50%"></div>
+            </div>
+            <span class="progress-description font-color">
+                  50% Increase in 30 Days
+                </span>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="info-box bg-yellowgreen">
+          <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+      
+          <div class="info-box-content">
+            <span class="info-box-text font-color" >Category</span>
+            <span class="info-box-number font-color">5,200</span>
+      
+            <div class="progress">
+              <div class="progress-bar" style="width: 50%"></div>
+            </div>
+            <span class="progress-description font-color">
+                  50% Increase in 30 Days
+                </span>
+          </div>
+        </div>
+    </div>
+    </div>
+  <div class="col-md-8">
+    <h5 class="sub-title">Delivery Time Demand</h5>
+    <div class="chart">
+      <canvas id='DTChart'>{{ chart }}</canvas>
+    </div>
+  </div>
+    
+  <div class="card" style="width: 40rem;">
+      <div class="card-body">
+        <h5 class="card-title sub-title">Latest Order</h5>
+        <!-- ------ -->
+        <div style="margin:0">
+            <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th class="sub-title">OrderId</th>
+                    <th class="sub-title">Total Price</th>
+                    <th class="sub-title">Payment Method</th>
+                    <th class="sub-title">Order Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let o of (orderService.orderList | slice: -5)">
+                    <td><a (click)="openDialogDetail(o)">{{o.OrderId}}</a></td>
+                    <td>{{o.TotalPrice}}</td>
+                    <td>{{o.PaymentMethod}}</td>
+                    <td>{{o.OrderStatus}}</td>
+                  </tr>
+              </tbody>
+              </table>
+            </div>
+        <!-- ------ -->
+        <a routerLink="/order" style="float: right;" class="card-link">View all order</a>
+      </div>
+    </div>
+    
+  <!-- this is platform pie chart -->
+  <!-- <iframe width="574" height="251" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQs_FWfBxJhdSBpvFoYJBX5VwwgOJ1rp31ZnCqZupmuLYswYT1sgP6CJ1usW6-JvQyoySB-uf65Zkj/pubchart?oid=1574235714&amp;format=interactive"></iframe> -->
+  
+  <!-- monthly session report -->
+  <!-- <iframe width="100%" height="450" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQs_FWfBxJhdSBpvFoYJBX5VwwgOJ1rp31ZnCqZupmuLYswYT1sgP6CJ1usW6-JvQyoySB-uf65Zkj/pubchart?oid=2127222766&amp;format=interactive"></iframe> -->
+  <!-- visitor type report -->
+  <!-- <iframe width="574" height="251" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQs_FWfBxJhdSBpvFoYJBX5VwwgOJ1rp31ZnCqZupmuLYswYT1sgP6CJ1usW6-JvQyoySB-uf65Zkj/pubchart?oid=2072029679&amp;format=interactive"></iframe> -->
+  <!-- <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQs_FWfBxJhdSBpvFoYJBX5VwwgOJ1rp31ZnCqZupmuLYswYT1sgP6CJ1usW6-JvQyoySB-uf65Zkj/pubchart?oid=146728701&amp;format=interactive"></iframe> -->
+  <!-- <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRQs_FWfBxJhdSBpvFoYJBX5VwwgOJ1rp31ZnCqZupmuLYswYT1sgP6CJ1usW6-JvQyoySB-uf65Zkj/pubchart?oid=1363623841&amp;format=interactive"></iframe> -->
 </main>

@@ -12,6 +12,7 @@ import { Category } from '../shared/category.model';
 })
 export class CategoryComponent implements OnInit {
   category: Category[];
+  
   constructor(
     public navigation: NavigationService,
     public dialog: MatDialog,
@@ -27,14 +28,14 @@ export class CategoryComponent implements OnInit {
   openDialog(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
-    dialogConfig.height = '300px';
+    dialogConfig.height = '500px';
     this.dialog.open(AddCategoryComponent, dialogConfig);
   }
 
   openDialogEdit(category: Category){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '400px';
-    dialogConfig.height = '300px';
+    dialogConfig.height = '500px';
     dialogConfig.data = category;
     this.dialog.open(AddCategoryComponent, dialogConfig);
   }

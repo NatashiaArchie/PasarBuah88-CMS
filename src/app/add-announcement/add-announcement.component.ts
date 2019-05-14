@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Announcement } from '../announcement.model';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
@@ -7,6 +6,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AnnouncementService } from '../shared/announcement.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Announcement } from '../shared/announcement.model';
 
 @Component({
   selector: 'app-add-announcement',

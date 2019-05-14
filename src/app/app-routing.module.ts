@@ -15,6 +15,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { CategoryComponent } from './category/category.component';
 import { HomeLayoutComponent } from './layout/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
 const routes: Routes = [
 
   {path:'',
@@ -27,7 +28,8 @@ const routes: Routes = [
     {path: 'order', component: OrderComponent},
     {path: 'voucher', component: VoucherComponent},
     {path: 'report', component: ReportComponent},
-    {path: 'manageStaff', component: ManageStaffComponent}
+    {path: 'manageStaff', component: ManageStaffComponent},
+    {path: 'announcement', component: AnnouncementComponent}
   ]},
   {path: '',
   component: LoginLayoutComponent,

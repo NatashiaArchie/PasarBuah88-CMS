@@ -45,7 +45,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let pd of productService.list">
-          <td>{{pd.ProductName}}</td>
+          <td><a (click)="openDialogDetail(pd)">{{pd.ProductName}}</a></td>
           <td>{{pd.RetailerPrice}}</td>
           <td>{{pd.SalesPrice}}</td>
           <td>{{pd.Quantity}}</td>
