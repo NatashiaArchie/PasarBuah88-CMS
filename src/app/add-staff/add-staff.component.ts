@@ -12,7 +12,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class AddStaffComponent implements OnInit {
   employee: Employee;
-
+  usertype = "admin";
   emailPattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$";
   phonePattern = "^(^\\+62\\s?|^0)(\\d{3,4}-?){2}\\d{3,4}$"
   constructor(
@@ -33,7 +33,8 @@ export class AddStaffComponent implements OnInit {
         FullName:'',
         Email:'',
         PhoneNumber:'',
-        Password:''
+        Password:'',
+        UserType:''
       }
     }
     
@@ -41,7 +42,7 @@ export class AddStaffComponent implements OnInit {
 
   OnSubmit(form: NgForm) {
     if (this.data == null) {
-      debugger;
+      
       this.employeeService.registerUser(form.value)
       .subscribe((data:any) => {
         console.log(form.value)

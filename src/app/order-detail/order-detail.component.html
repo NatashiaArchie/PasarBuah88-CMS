@@ -12,6 +12,7 @@
       <th>Quantity</th>
       <th>Unit Price</th>
       <th>Total Price</th>
+      <th>Revenue</th>
       
     </tr>
   </thead>
@@ -24,7 +25,15 @@
       </td>
       <td *ngIf="od.OrderId == orderId">{{od.Quantity}}</td>
       <td *ngIf="od.OrderId == orderId">{{od.UnitPrice| number:'1.2-2'}}</td>
-      <td *ngIf="od.OrderId == orderId">{{od.TotalPrice| number:'1.2-2'}}</td> 
+      <td *ngIf="od.OrderId == orderId">{{od.TotalPrice| number:'1.2-2'}}</td>
+      <td *ngIf="od.OrderId == orderId">{{od.Revenue| number:'1.2-2'}}</td> 
+    </tr>
+    <tr>
+      <td class="sub-title">Total:</td>
+      <td></td>
+      <td></td>
+      <td class="sub-title">{{totalprice | number:'1.2-2'}}</td>
+      <td class="sub-title">{{revenue | number:'1.2-2'}}</td>
     </tr>
     
 </tbody>

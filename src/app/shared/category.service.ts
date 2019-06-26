@@ -26,6 +26,17 @@ export class CategoryService {
     .toPromise().then(res => this.list = res as Category[])
   }
 
+  refreshList1() {
+    var reqHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('userToken')});
+    return this.http.get(this.rootUrl + 'api/Category', {headers: reqHeader})
+    .toPromise()
+  }
+
+  returnCategory() {
+    var reqHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('userToken')});
+    return this.http.get(this.rootUrl + 'api/Category', {headers: reqHeader})
+  }
+
   editCategory(category: Category){
     const body: Category = {
       CategoryId: category.CategoryId,

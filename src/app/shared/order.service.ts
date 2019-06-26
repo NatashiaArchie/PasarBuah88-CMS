@@ -49,4 +49,14 @@ export class OrderService {
     return this.http.get(this.rootUrl + 'api/Orders', {headers: reqHeader})
     .map(result => result);
   }
+
+  returnOrder() {
+    var reqHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')});
+    return this.http.get(this.rootUrl + 'api/Orders', {headers: reqHeader})
+  }
+
+  returnOrderDetail() {
+    var reqHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('userToken')});
+    return this.http.get(this.rootUrl + 'api/OrderDetails', {headers: reqHeader})
+  }
 }

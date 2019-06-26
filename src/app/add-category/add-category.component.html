@@ -16,14 +16,14 @@
           <small class="text-danger" [class.d-none]="image.valid || image.untouched">Image is required</small>
     </div>
   <input type="hidden" class="form-control hidden" name="CategoryId" #CategoryId="ngModel" [(ngModel)]="category.CategoryId">
-<div class="textbox" style="margin-top: 40px">
+<div class="textbox" style="">
   <label>Category Name</label>
   <input cdkFocusInitial type="text" class="form-control validate" placeholder="Enter Category Name"
   name="CategoryName" #CategoryName="ngModel" [(ngModel)]="category.CategoryName" 
   [class.is-invalid]="CategoryName.invalid && CategoryName.touched" required>
   <small class="text-danger" [class.d-none]="CategoryName.valid || CategoryName.untouched">Category name is required</small>
 
-  <div class="textbox" style="margin-top: 50px">
+  <div class="textbox" style="margin-top:25px">
     <button [disabled]="!addCategory.valid"type="submit" class="btn btn-success btn-block">Submit</button>
   </div>
 </div>

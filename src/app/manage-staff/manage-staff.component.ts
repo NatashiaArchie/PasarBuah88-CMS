@@ -27,15 +27,15 @@ export class ManageStaffComponent implements OnInit {
 
   openDialogAdd() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '400px';
-    dialogConfig.height = '400px';
+    dialogConfig.width = '500px';
+    dialogConfig.height = '540px';
     this.dialog.open(AddStaffComponent, dialogConfig);
   }
 
   openDialogEdit(emp : Employee) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '400px';
-    dialogConfig.height = '400px';
+    dialogConfig.width = '500px';
+    dialogConfig.height = '540px';
     dialogConfig.disableClose = true;
     dialogConfig.data = emp;
     this.dialog.open(AddStaffComponent, dialogConfig);

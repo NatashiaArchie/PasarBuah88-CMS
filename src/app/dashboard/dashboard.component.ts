@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../navigation.service';
 import { OrderService } from '../shared/order.service';
 import Chart from 'chart.js';
-import { map } from 'rxjs/operators';
+import * as moment from 'moment';
 import 'rxjs/Rx';
-import { copyStyles } from '@angular/animations/browser/src/util';
+import { ProductService } from '../shared/product.service';
+import { CategoryService } from '../shared/category.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,8 +15,12 @@ import { copyStyles } from '@angular/animations/browser/src/util';
 export class DashboardComponent implements OnInit {
   index = 5;
   chart: [];
+  CPcount;
   deliveryTime: string[] = [];
+  DataCP: number[] = [];
   DataDT: number[] = [];
+  Category: string[] = [];
+  Product: string[] = [];
   dt12 = 0;
   dt01 = 0;
   dt02 = 0;
@@ -24,18 +29,63 @@ export class DashboardComponent implements OnInit {
   dt05 = 0;
   dt06 = 0;
   dt07 = 0;
+  revenue: number;
+  dailyRevenue: number;
+  totalprice: number;
+  dailyDate = moment().format('MMM D');
 
   constructor(
-    public orderService: OrderService
+    public orderService: OrderService,
+    public productService: ProductService,
+    public categoryService: CategoryService
   ) { }
 
   ngOnInit() {
     this.orderService.refreshList();
     this.DeliveryTime();
+    this.CategoryCount();
+    
+    this.DailyRevenue(this.dailyDate);
+    console.log(this.dailyRevenue);
+
+    this.WeeklyRevenue();
     
   }
 
-  
+  CategoryCount() {
+    this.categoryService.returnCategory()
+    .subscribe(category => {
+      for( var c in category) {
+          this.Category.push(category[c].CategoryName);
+      } 
+      
+      this.productService.returnProduct()
+      .subscribe(product => {
+        for( var p in product) {
+          this.Product.push(product[p].Category);
+        } 
+
+        for(var ca in this.Category) {
+          this.CPcount =0;
+          for(var po in this.Product) {
+            if (this.Product[po] == this.Category[ca]){
+              this.CPcount++;
+            }
+          }if (this.CPcount == 0){
+            this.DataCP.push(null);
+          }else {
+            this.DataCP.push(this.CPcount);
+          }
+          this.CPChart(this.DataCP);
+        }
+      })
+      
+    })
+    console.log(this.Category);
+    console.log(this.DataCP);
+    
+
+  }
 
   DeliveryTime() {
     this.DataDT = [];
@@ -44,7 +94,7 @@ export class DashboardComponent implements OnInit {
       for(var i=0; i < Object.keys(res).length; i++) {
         this.deliveryTime.push(res[i].DeliveryTime)
       } 
-      console.log(this.deliveryTime);
+
       for(var i=0; i < Object.keys(res).length; i++) {
         if (this.deliveryTime[i] == "12PM - 01PM") {
           this.dt12++;
@@ -77,10 +127,28 @@ export class DashboardComponent implements OnInit {
       this.DTChart(this.DataDT);
       
   });
-
- 
+}
+  CPChart(data: any) {
+    this.chart = new Chart('CPChart', {
+      type: 'pie',
+      data: {
+         labels: this.Category,
+        datasets: [{
+          label: "Population (millions)",
+          backgroundColor: ["#3d5214","#cce698","#5c7b1e","#b8dc6f","#7ba428","#a4d246","#9acd32","#2e3d0f","#4d6619","#6b8f23","#8ab82d" ],
+          data: data
+        }]
+      },
+      options: {
+        responsive: true,
+        
+        title: {
+          // display: true,
+          // text: 'Predicted world population (millions) in 2050'
+        }
+      }
+  });
   }
-
   DTChart(data: any) {
     this.chart = new Chart('DTChart', {
       type: 'line',
@@ -93,7 +161,9 @@ export class DashboardComponent implements OnInit {
         }]  
       },
       options: {
-				responsive: true,
+        responsive: true,
+        hover: {mode: null},
+ 
 				scales: {
 					yAxes: [{
 						ticks: {
@@ -105,5 +175,49 @@ export class DashboardComponent implements OnInit {
 				}
 			}
     });
+  }
+
+  WeeklyRevenue() {
+    var WRLabel: string[] = [];
+    var WRData: number[] = [];
+    for(var i=7;i<0;i--) {
+      var WRDate = moment().subtract(i, "days").format("MMM D");
+      WRLabel.push(WRDate);
+      this.DailyRevenue(WRDate);
+      WRData.push(this.dailyRevenue);
+    }
+    console.log(WRDate);
+    console.log(WRData);
+    
+  }
+
+  DailyRevenue(date: string) {
+    this.dailyRevenue = 0;
+    this.orderService.returnOrder()
+    .subscribe(orderData => {
+      for( var o in orderData) {
+        var res = orderData[o].PurchaseDate.split(", ");
+
+        if(res[1] == date) {
+          this.getRevenue(orderData[o].OrderId);
+        }
+      }
+    })
+  }
+
+  getRevenue(id: number) {
+    this.revenue = 0;
+    this.totalprice = 0;
+    this.orderService.returnOrderDetail()
+    .subscribe(data => {
+      for (var d in data) // for acts as a foreach  
+      {  
+        if(id == data[d].OrderId) {
+          this.revenue += data[d].Revenue;
+        }
+      }
+      this.dailyRevenue += this.revenue;
+
+    })
   }
 }

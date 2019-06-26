@@ -14,6 +14,8 @@ import { ProductService } from '../shared/product.service';
 export class OrderDetailComponent implements OnInit {
   order: Order;
   orderId: number;
+  revenue: number;
+  totalprice: number;
 
   product: Product[];
   orderDetail: OrderDetail[];
@@ -30,11 +32,28 @@ export class OrderDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.revenue = 0;
+    this.totalprice = 0;
     this.orderId=  this.order.OrderId;
     this.orderService.getOrderDetail();
     this.orderService.getOrderDetailProduct();
     this.orderService.getOrderAddress();
     this.productService.refreshList();
+    
+    this.orderService.returnOrderDetail()
+    .subscribe(data => {
+      for (var d in data) // for acts as a foreach  
+      {  
+        if(this.orderId == data[d].OrderId) {
+          this.revenue += data[d].Revenue;
+          this.totalprice += data[d].TotalPrice;
+        }
+      }
+    })
+
+    
+
+    
 
   }
 

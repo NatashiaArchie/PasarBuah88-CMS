@@ -19,6 +19,7 @@ export class EmployeeService {
       Email: employee.Email,
       PhoneNumber: employee.PhoneNumber,
       Password: employee.Password,
+      UserType: employee.UserType,
     }
     return this.http.post(this.rootUrl + 'api/User/Register', body);
   }
@@ -44,6 +45,7 @@ export class EmployeeService {
       Email: employee.Email,
       PhoneNumber: employee.PhoneNumber,
       Password: employee.Password,
+      UserType: employee.UserType,
     }
     return this.http.put(this.rootUrl + 'api/User/' + employee.Id, body);
   }

@@ -12,7 +12,7 @@ import { Category } from '../shared/category.model';
 })
 export class CategoryComponent implements OnInit {
   category: Category[];
-  
+  searchTerm: string;
   constructor(
     public navigation: NavigationService,
     public dialog: MatDialog,

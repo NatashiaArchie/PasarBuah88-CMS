@@ -12,7 +12,7 @@ export class ProductService {
   constructor( private http: HttpClient) { }
 
   addProduct(product: Product) {
-    // var reqHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('userToken')});
+
     const body: Product = {
       ImageUrl: product.ImageUrl,
       ProductName: product.ProductName,
@@ -50,6 +50,11 @@ export class ProductService {
     var reqHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('userToken')});
     this.http.get(this.rootUrl + 'api/Product', {headers: reqHeader})
     .toPromise().then(res => this.list = res as Product[])
+  }
+
+  returnProduct() {
+    var reqHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('userToken')});
+    return this.http.get(this.rootUrl + 'api/Product', {headers: reqHeader});
   }
 
   deleteProduct(id: number){

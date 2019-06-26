@@ -12,7 +12,8 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  product : Product
+  product : Product;
+  searchTerm: string;
   constructor(
     public navigation: NavigationService,
     public dialog: MatDialog,

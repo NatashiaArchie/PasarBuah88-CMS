@@ -12,7 +12,7 @@ import { AnnouncementDetailComponent } from '../announcement-detail/announcement
 })
 export class AnnouncementComponent implements OnInit {
   announcement: Announcement;
-
+  searchTerm: string;
   constructor(
     public dialog: MatDialog,
     public announcementService: AnnouncementService

@@ -19,8 +19,7 @@
     <div class="">
         <form class="form-inline my-2 my-lg-0 searchbox " action="" method="">
           <div class="buttonrow">
-            <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search">
-            <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search"> -->
+            <input class="form-control form-control-sm" type="text" [(ngModel)]="searchTerm" name="search" placeholder="Search" aria-label="Search">
             <button type="button" class="btn btn-sm btn-outline-secondary " >Search</button>
           </div>
         </form>
@@ -31,14 +30,14 @@
     <thead>
       <tr>
         <!-- <th>#</th> -->
-        <th>No.</th>
+        <!-- <th>No.</th> -->
         <th>Category Name</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let cat of categoryService.list; let i = index">
-        <td>{{i + 1}}</td>
+      <tr *ngFor="let cat of categoryService.list | categoryFilter: searchTerm">
+        <!-- <td>{{i + 1}}</td> -->
         <td>{{cat.CategoryName}}</td>
         <td>
           <button type="button" class="btn btn-sm btn-outline-info actionButton " (click)="openDialogEdit(cat)">Edit</button>

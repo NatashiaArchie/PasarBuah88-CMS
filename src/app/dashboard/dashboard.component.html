@@ -36,8 +36,8 @@
           <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
       
           <div class="info-box-content">
-            <span class="info-box-text font-color">Sales</span>
-            <span class="info-box-number font-color">5,200</span>
+            <span class="info-box-text font-color">Today's Revenue</span>
+            <span class="info-box-number font-color">RM {{ dailyRevenue | number:'1.2-2'}}</span>
       
             <div class="progress">
               <div class="progress-bar" style="width: 50%"></div>
@@ -67,12 +67,21 @@
         </div>
     </div>
     </div>
-  <div class="col-md-8">
-    <h5 class="sub-title">Delivery Time Demand</h5>
-    <div class="chart">
-      <canvas id='DTChart'>{{ chart }}</canvas>
+    <div class="row">
+      <div class="col-md-8">
+        <h5 class="sub-title">Delivery Time Demand</h5>
+        <div class="chart">
+          <canvas id='DTChart'>{{ chart }}</canvas>
+        </div>
+      </div>
+      <div>
+        <h5 class="sub-title">Category Count</h5>
+        <div class="chart">
+          <canvas id='CPChart' height="300">{{ chart }}</canvas>
+        </div>
+      </div>
     </div>
-  </div>
+  
     
   <div class="card" style="width: 40rem;">
       <div class="card-body">

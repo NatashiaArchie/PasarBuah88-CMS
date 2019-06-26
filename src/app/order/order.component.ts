@@ -11,7 +11,8 @@ import { OrderDetailComponent } from '../order-detail/order-detail.component';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-
+  revenue: number;
+  totalprice: number;
   constructor(
     public orderService: OrderService,
     public dialog: MatDialog,
@@ -28,5 +29,10 @@ export class OrderComponent implements OnInit {
     dialogConfig.data = order;
     this.dialog.open(OrderDetailComponent, dialogConfig);
   }
+
+
+
+
+  
 
 }

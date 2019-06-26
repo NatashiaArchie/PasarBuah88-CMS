@@ -37,7 +37,10 @@ import { AnnouncementService } from './shared/announcement.service';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-
+import { AnalyticComponent } from './analytic/analytic.component';
+import { AnnouncementFilterPipe } from './announcement/announcement-filter.pipe';
+import { ProductFilterPipe } from './product/product-filter.pipe';
+import { CategoryFilterPipe } from './category/category-filter.pipe';
 // import * as firebase from 'firebase';
 
 // firebase.initializeApp(environment.firebase);
@@ -66,6 +69,10 @@ import { environment } from 'src/environments/environment';
     ProductDetailComponent,
     AnnouncementComponent,
     AnnouncementDetailComponent,
+    AnalyticComponent,
+    AnnouncementFilterPipe,
+    ProductFilterPipe,
+    CategoryFilterPipe
   ],
   imports: [
     BrowserModule,
