@@ -15,6 +15,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
   styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent implements OnInit {
+  image;
   category: Category;
   imageUrl: string = "../../assets/images/uploadimages.jpg";
   fileToUpload: File;

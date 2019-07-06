@@ -18,6 +18,7 @@ import { CategoryService } from '../shared/category.service';
   providers: [ProductService]
 })
 export class AddProductComponent implements OnInit {
+  image;
   imageUrl: string = "../../assets/images/uploadimages.jpg";
   product : Product;
   fileToUpload : File = null;
@@ -45,7 +46,7 @@ export class AddProductComponent implements OnInit {
     private router: Router,
     public dialogRef : MatDialogRef<AddProductComponent>,
     public fireDatabase :  AngularFireDatabase,
-    private categoryService: CategoryService,
+    public categoryService: CategoryService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { 
     this.product = this.data;

@@ -3,13 +3,13 @@
       <h1 class="h2">Products</h1>
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group mr-2">
-          <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">Export</button> -->
         </div>
-        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+        <!-- <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
           <span data-feather="calendar"></span>
           This week
-        </button>
+        </button> -->
       </div>
     </div>
     <div class="">        
@@ -22,6 +22,17 @@
               <input class="form-control form-control-sm" type="text" [(ngModel)]="searchTerm" name="searchTerm" placeholder="Search" aria-label="Search">
               <button type="button" class="btn btn-sm btn-outline-secondary " >Search</button>
             </div>
+            <!-- <div class="form-group">
+              <label>Category</label>
+              <div class="form-group">    
+                <select class="btn btn-dropdown btn-outline-secondary" 
+                    name="Category" #Category="ngModel" [(ngModel)]="product.Category" 
+                    [class.is-invalid]="Category.invalid && Category.touched" required>
+                    <option  *ngFor="let category of categoryService.list" [value]="category.CategoryName">{{category.CategoryName}}</option>
+                </select>
+                <small class="text-danger" [class.d-none]="Category.valid || Category.untouched">Category is required</small>
+              </div>
+          </div> -->
           </form>
           
       </div>

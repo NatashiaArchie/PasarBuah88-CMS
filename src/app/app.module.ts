@@ -21,7 +21,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './auth/auth.guard';
-import { EditStaffComponent } from './edit-staff/edit-staff.component';
 import { ProductService } from './shared/product.service';
 import { CategoryComponent } from './category/category.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
@@ -59,7 +58,6 @@ import { CategoryFilterPipe } from './category/category-filter.pipe';
     AddStaffComponent,
     AddProductComponent,
     RegisterComponent,
-    EditStaffComponent,
     CategoryComponent,
     AddCategoryComponent,
     HomeLayoutComponent,
@@ -87,6 +85,6 @@ import { CategoryFilterPipe } from './category/category-filter.pipe';
   ],
   providers: [EmployeeService, AuthGuard, ProductService, CategoryService, AnnouncementService],
   bootstrap: [AppComponent],
-  entryComponents: [AddStaffComponent, EditStaffComponent, AddProductComponent, AddCategoryComponent, AddAnnouncementComponent ,AnnouncementDetailComponent, OrderDetailComponent, ProductDetailComponent]
+  entryComponents: [AddStaffComponent, AddProductComponent, AddCategoryComponent, AddAnnouncementComponent ,AnnouncementDetailComponent, OrderDetailComponent, ProductDetailComponent]
 })
 export class AppModule { }

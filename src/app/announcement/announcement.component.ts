@@ -36,8 +36,11 @@ export class AnnouncementComponent implements OnInit {
     this.dialog.open(AddAnnouncementComponent, dialogConfig);
   }
 
-  onDelete(id: number) {
-
+  onDelete(Id : number) {
+    this.announcementService.deleteAnnouncement(Id)
+    .subscribe((data) => {
+      this.announcementService.refreshList();
+    })
   }
 
   openDialogDetail(a: Announcement) {
@@ -47,7 +50,4 @@ export class AnnouncementComponent implements OnInit {
     dialogConfig.data = a;
     this.dialog.open(AnnouncementDetailComponent, dialogConfig);
   }
-
-
-
 }

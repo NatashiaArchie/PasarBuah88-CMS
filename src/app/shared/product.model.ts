@@ -1,4 +1,5 @@
 export class Product {
+    image?: File;
     ProductId?: number;
     ImageUrl: string;
     ProductName: string;

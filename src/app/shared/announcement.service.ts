@@ -46,5 +46,9 @@ export class AnnouncementService {
     .toPromise().then(res => this.list = res as Announcement[])
   }
 
+  deleteAnnouncement(id: number){
+    return this.http.delete(this.rootUrl + 'api/Announcement/'+id)
+  }
+
 
 }

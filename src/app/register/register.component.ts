@@ -12,6 +12,8 @@ import { EmployeeService } from '../shared/employee.service';
 })
 export class RegisterComponent implements OnInit {
   employee: Employee;
+  emailPattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$";
+  phonePattern = "^(^\\+62\\s?|^0)(\\d{3,4}-?){2}\\d{3,4}$"
   constructor( 
     public navigation: NavigationService,
     private employeeService: EmployeeService

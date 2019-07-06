@@ -5,7 +5,6 @@ import { AddStaffComponent } from '../add-staff/add-staff.component';
 import { LoginComponent } from '../login/login.component';
 import { EmployeeService } from '../shared/employee.service';
 import { Employee } from '../shared/employee.model';
-import { EditStaffComponent } from '../edit-staff/edit-staff.component';
 
 @Component({
   selector: 'app-manage-staff',

@@ -14,6 +14,7 @@ import { Announcement } from '../shared/announcement.model';
   styleUrls: ['./add-announcement.component.scss']
 })
 export class AddAnnouncementComponent implements OnInit {
+  image;
   imageUrl: string = "../../assets/images/uploadimages.jpg";
   announcement: Announcement;
   fileToUpload: File;
@@ -48,7 +49,7 @@ export class AddAnnouncementComponent implements OnInit {
     }
   }
 
-  handleFileInput(file: FileList, form: NgForm){
+  handleFileInput(file: FileList){
     this.fileToUpload = file.item(0);
     var reader = new FileReader();
     reader.onload = (event:any) => {

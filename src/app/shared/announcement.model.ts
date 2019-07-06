@@ -1,4 +1,5 @@
 export class Announcement {
+    image?: File
     AnnouncementId?: number;
     ImageUrl: string;
     Title: string;

@@ -18,7 +18,13 @@ import { LoginLayoutComponent } from './layout/login-layout/login-layout.compone
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { AnalyticComponent } from './analytic/analytic.component';
 const routes: Routes = [
-
+  {path: '',
+  component: LoginLayoutComponent,
+  children: [
+    { path: '', component: LoginComponent },
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
+  ]},
   {path:'',
   component: HomeLayoutComponent,
   children: [
@@ -32,13 +38,8 @@ const routes: Routes = [
     {path: 'manageStaff', component: ManageStaffComponent},
     {path: 'announcement', component: AnnouncementComponent},
     {path: 'analytics', component: AnalyticComponent}
-  ]},
-  {path: '',
-  component: LoginLayoutComponent,
-  children: [
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
   ]}
+  
 
 
   

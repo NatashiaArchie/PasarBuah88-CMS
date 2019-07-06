@@ -8,7 +8,8 @@
 <form class="form-container" #announcementForm="ngForm" (ngSubmit)="OnSubmit(announcementForm)">
 
   <img class="imagePreview" [src]="imageUrl"/>
-
+  <input type="hidden" class="form-control hidden" placeholder="Enter Product Name"
+                    name="AnnouncementId" #AnnouncementId="ngModel" [(ngModel)]="announcement.AnnouncementId">
   <div>
     <label class="btn btnn btn-primary form-group textbox" style="margin-bottom: 0px;margin-top: 0px">
         Upload<input type="file" accept="image/*" class="uploadFile img" value="Upload Photo" (change)="handleFileInput($event.target.files)" style="width: 0px;height: 0px;overflow: hidden;"
