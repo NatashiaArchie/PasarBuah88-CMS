@@ -35,7 +35,7 @@ export class AddAnnouncementComponent implements OnInit {
 
   ngOnInit() {
     if(this.announcement == null) {
-      this.imageUrl = "../../assets/images/uploadimages.jpg";
+      this.imageUrl = "https://firebasestorage.googleapis.com/v0/b/pasarbuah88-fyp.appspot.com/o/announcement%2Fuploadimages.jpg?alt=media&token=36d606f6-c56c-410e-bdfb-b536326993e2";
       this.announcement = {
         ImageUrl: null,
         Title: '',
@@ -60,46 +60,52 @@ export class AddAnnouncementComponent implements OnInit {
 
   OnSubmit(form: NgForm) {
     console.log(form.value);
-    
-    const metaData = {'contentType': this.fileToUpload.type};
-    var storageRef = firebase.storage().ref();
-    var uploadProduct = storageRef.child(`${this.basePath}/${this.fileToUpload.name}`)
-    .put(this.fileToUpload, metaData)
-      .then((result) => {
 
-        //get download Url
-        storageRef.child(`${this.basePath}/${this.fileToUpload.name}`).getDownloadURL()
-        .then((url) => {
-          console.log(url);
-          form.value.ImageUrl = url;
-          //add to database
-          if (form.value.AnnouncementId == null) {
-            this.announcementService.AddAnnouncement(form.value)
-              .subscribe((data:any) => {
-                this.announcementService.refreshList();
-                  form.reset();
-                  this.toastr.success('Product has been added successful');
-                  this.dialogRef.close();
-          });
-          }
-          else {
-            this.announcementService.EditAnnouncement(form.value)
-              .subscribe((data:any) => {
-                  form.reset();
-                  this.toastr.success('Product has been updated successful');
-                  this.dialogRef.close();    
-                this.announcementService.refreshList();
-          });
-          this.announcementService.refreshList();
-          }
-          
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    if (form.value.AnnouncementId != null) {
+      form.value.ImageUrl = this.data.ImageUrl;
+      this.announcementService.EditAnnouncement(form.value)
+          .subscribe((data:any) => {
+              form.reset();
+              this.toastr.success('Product has been updated successful');
+              this.dialogRef.close();    
+            this.announcementService.refreshList();
       });
-    console.log("Uploading: ", this.fileToUpload.name);
-    console.log(form.value);
+      this.announcementService.refreshList();
+    } else {
+      const metaData = {'contentType': this.fileToUpload.type};
+      var storageRef = firebase.storage().ref();
+      var uploadProduct = storageRef.child(`${this.basePath}/${this.fileToUpload.name}`)
+      .put(this.fileToUpload, metaData)
+        .then((result) => {
+
+          //get download Url
+          storageRef.child(`${this.basePath}/${this.fileToUpload.name}`).getDownloadURL()
+          .then((url) => {
+            console.log(url);
+            form.value.ImageUrl = url;
+            //add to database
+            if (form.value.AnnouncementId == null) {
+              this.announcementService.AddAnnouncement(form.value)
+                .subscribe((data:any) => {
+                  this.announcementService.refreshList();
+                    form.reset();
+                    this.toastr.success('Product has been added successful');
+                    this.dialogRef.close();
+            });
+            }
+            else {
+            }
+            
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        });
+      console.log("Uploading: ", this.fileToUpload.name);
+      console.log(form.value);
+    }
+    
+    
     
   }
 

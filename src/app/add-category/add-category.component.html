@@ -11,9 +11,10 @@
     <div>
         <label class="btn btn-primary form-group textbox" style="margin-bottom: 0px;margin-top: 0px">
             Upload<input type="file" accept="image/*" class="uploadFile img" value="Upload Photo" (change)="handleFileInput($event.target.files)" style="width: 0px;height: 0px;overflow: hidden;"
-            [class.is-invalid]="images.invalid && images.touched" name="images" #images="ngModel" [(ngModel)]="image" required>           
+            name="images" #images="ngModel" [(ngModel)]="image" >  
+            <!-- [class.is-invalid]="images.invalid && images.touched"  -->         
           </label>
-          <small class="text-danger" [class.d-none]="images.valid || images.untouched">Image is required</small>
+          <!-- <small class="text-danger" [class.d-none]="images.valid || images.untouched">Image is required</small> -->
     </div>
   <input type="hidden" class="form-control hidden" name="CategoryId" #CategoryId="ngModel" [(ngModel)]="category.CategoryId">
 <div class="textbox" style="">

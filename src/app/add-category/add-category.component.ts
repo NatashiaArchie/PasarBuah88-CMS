@@ -17,7 +17,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class AddCategoryComponent implements OnInit {
   image;
   category: Category;
-  imageUrl: string = "../../assets/images/uploadimages.jpg";
+  imageUrl: string = "https://firebasestorage.googleapis.com/v0/b/pasarbuah88-fyp.appspot.com/o/announcement%2Fuploadimages.jpg?alt=media&token=36d606f6-c56c-410e-bdfb-b536326993e2";
   fileToUpload: File;
   basePath = '/category';
   constructor(
@@ -34,7 +34,7 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit() {
     if (this.category == null){
-        this.imageUrl = "../../assets/images/uploadimages.jpg";
+        this.imageUrl = "https://firebasestorage.googleapis.com/v0/b/pasarbuah88-fyp.appspot.com/o/announcement%2Fuploadimages.jpg?alt=media&token=36d606f6-c56c-410e-bdfb-b536326993e2";
       this.category = {
         CategoryId: null,
         CategoryName: '',
@@ -59,47 +59,51 @@ export class AddCategoryComponent implements OnInit {
     debugger;
     console.log(form.value);
     
-    const metaData = {'contentType': this.fileToUpload.type};
-    var storageRef = firebase.storage().ref();
-    var uploadProduct = storageRef.child(`${this.basePath}/${this.fileToUpload.name}`)
-    .put(this.fileToUpload, metaData)
-      .then((result) => {
-
-        //get download Url
-        storageRef.child(`${this.basePath}/${this.fileToUpload.name}`).getDownloadURL()
-        .then((url) => {
-          console.log(url);
-          form.value.ImageUrl = url;
-          form.value.ProductUnitType = form.value.unit + ' ' + form.value.type;
-          //add to database
-          //debugger;
-          console.log(form.value);
-          if (form.value.CategoryId == null) {
-            console.log(form.value);
-            this.categoryService.addCategory(form.value)
-            .subscribe((data: any) => {
-              this.categoryService.refreshList();
-                  form.reset();
-                  this.toastr.success('Category has been added successful');
-                  this.dialogRef.close();
-            });
-          }
-          else {
-            this.categoryService.editCategory(form.value)
-            .subscribe((data: any) => {
-              this.categoryService.refreshList();
-                  form.reset();
-                  this.toastr.success('Category has been added successful');
-                  this.dialogRef.close();
-            });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    if (form.value.CategoryId != null){
+      form.value.ImageUrl = this.category.ImageUrl;
+      this.categoryService.editCategory(form.value)
+      .subscribe((data: any) => {
+        this.categoryService.refreshList();
+            form.reset();
+            this.toastr.success('Category has been added successful');
+            this.dialogRef.close();
       });
-    console.log("Uploading: ", this.fileToUpload.name);
-    console.log(form.value);
+    }else {
+      const metaData = {'contentType': this.fileToUpload.type};
+      var storageRef = firebase.storage().ref();
+      var uploadProduct = storageRef.child(`${this.basePath}/${this.fileToUpload.name}`)
+      .put(this.fileToUpload, metaData)
+        .then((result) => {
+
+          //get download Url
+          storageRef.child(`${this.basePath}/${this.fileToUpload.name}`).getDownloadURL()
+          .then((url) => {
+            console.log(url);
+            form.value.ImageUrl = url;
+            form.value.ProductUnitType = form.value.unit + ' ' + form.value.type;
+            //add to database
+            //debugger;
+            console.log(form.value);
+            if (form.value.CategoryId == null) {
+              console.log(form.value);
+              this.categoryService.addCategory(form.value)
+              .subscribe((data: any) => {
+                this.categoryService.refreshList();
+                    form.reset();
+                    this.toastr.success('Category has been added successful');
+                    this.dialogRef.close();
+              });
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        });
+      console.log("Uploading: ", this.fileToUpload.name);
+      console.log(form.value);
+    }
+
+    
 
 
 

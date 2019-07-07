@@ -135,7 +135,7 @@ export class DashboardComponent implements OnInit {
          labels: this.Category,
         datasets: [{
           label: "Population (millions)",
-          backgroundColor: ["#3d5214","#cce698","#5c7b1e","#b8dc6f","#7ba428","#a4d246","#9acd32","#2e3d0f","#4d6619","#6b8f23","#8ab82d" ],
+          backgroundColor: ["#6b8f23","#db4437","#f4b400","#4d90ff","#e69138","#c27ba0","#2e3d0f","#dd7e6b","#4d6619","#6b8f23","#8ab82d" ],
           data: data
         }]
       },
